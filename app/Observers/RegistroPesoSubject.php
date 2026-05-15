@@ -8,38 +8,30 @@ class RegistroPesoSubject
 {
     private array $observadores = [];
 
-    public function suscribir(IRegistroPesoObserver $observador): void
+    public function suscribir(IRegistroPesoObserver $observer): void
     {
-        $this->observadores[spl_object_hash($observador)] = $observador;
+        $this->observadores[] = $observer;
     }
 
-    public function desuscribir(IRegistroPesoObserver $observador): void
+    public function desuscribir(IRegistroPesoObserver $observer): void
     {
-        unset($this->observadores[spl_object_hash($observador)]);
+        $this->observadores = array_filter(
+            $this->observadores,
+            fn ($actual) => $actual !== $observer
+        );
     }
 
-    public function registrarPeso(RegistroPeso $registro): RegistroPeso
+    public function registrarPeso(RegistroPeso $registro): void
     {
         $registro->save();
-        $this->notificar($registro);
 
-        return $registro;
+        $this->notificar($registro);
     }
 
     private function notificar(RegistroPeso $registro): void
     {
-        foreach ($this->observadores as $observador) {
-            $observador->onPesoRegistrado($registro);
+        foreach ($this->observadores as $observer) {
+            $observer->onPesoRegistrado($registro);
         }
-    }
-
-    public function adjuntar(IRegistroPesoObserver $observador): void
-    {
-        $this->suscribir($observador);
-    }
-
-    public function separar(IRegistroPesoObserver $observador): void
-    {
-        $this->desuscribir($observador);
     }
 }

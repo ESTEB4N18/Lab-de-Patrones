@@ -4,10 +4,13 @@ namespace App\Models;
 
 class Angus extends Raza
 {
-    protected $table = 'razas';
+    public function __construct()
+    {
+        parent::__construct('Angus');
+    }
 
-    protected $attributes = [
-        'nombre' => 'Angus',
-        'descripcion' => 'Raza bovina de carne reconocida por su rendimiento y calidad.',
-    ];
+    public function getFactorConversion(): float
+    {
+        return 1.20;
+    }
 }

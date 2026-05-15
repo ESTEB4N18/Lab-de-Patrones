@@ -10,8 +10,6 @@ interface IAnimalRepository
 
     public function findAllByRancho(int $ranchoId): array;
 
-    public function findAll(): array;
-
     public function save(Animal $animal): void;
 
     public function delete(int $id): void;
