@@ -1,1 +1,1 @@
-{"version":2,"defects":[],"times":{"Tests\\Unit\\EstimadorPesoServiceTest::test_usa_tabla_de_referencia_cuando_yolov8_no_esta_disponible":0.005,"Tests\\Unit\\RegistroPesoSubjectTest::test_notificar_avisa_a_todos_los_observadores_suscritos":0.032}}
+{"version":2,"defects":[],"times":{"Tests\\Unit\\EstimadorPesoServiceTest::test_usa_tabla_de_referencia_cuando_yolov8_no_esta_disponible":0.006,"Tests\\Unit\\RegistroPesoSubjectTest::test_notificar_avisa_a_todos_los_observadores_suscritos":0.033}}
