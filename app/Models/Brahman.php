@@ -4,10 +4,12 @@ namespace App\Models;
 
 class Brahman extends Raza
 {
-    public function __construct()
-    {
-        parent::__construct('Brahman');
-    }
+    protected $attributes = [
+        'nombre' => 'Brahman',
+        'descripcion' => 'Raza bovina cebuina de alta adaptacion al tropico.',
+        'peso_referencia_min' => 250,
+        'peso_referencia_max' => 550,
+    ];
 
     public function getFactorConversion(): float
     {

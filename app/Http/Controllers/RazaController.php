@@ -16,8 +16,9 @@ class RazaController extends Controller
         $raza = $this->razaFactory->create($request->nombre_raza);
 
         return response()->json([
-            'nombre' => $raza->nombre,
-            'descripcion' => $raza->descripcion,
+            'nombre' => $raza->getNombre(),
+            'descripcion' => $raza->getDescripcion(),
+            'factor_conversion' => $raza->getFactorConversion(),
         ]);
     }
 }
